@@ -1,7 +1,7 @@
 %define module	Net-NIS
 %define name	perl-%{module}
-%define version 0.34
-%define release %mkrel 6
+%define version 0.42
+%define release %mkrel 1
 
 Summary:	NIS interface to Perl 5	
 Name:		%{name}
@@ -12,7 +12,7 @@ Group:		Development/Perl
 URL:		http://search.cpan.org/dist/%{module}
 Source:		ftp://ftp.perl.org/pub/CPAN/modules/by-module/Net/%{module}-%{version}.tar.bz2
 BuildRequires:	perl-devel
-Buildroot:	%{_tmppath}/%{name}-root
+Buildroot:	%{_tmppath}/%{name}-%{version}
 
 %description
 This is a snapshot release of the NIS interface to Perl 5.  There are
@@ -24,23 +24,22 @@ oriented component (Net::NIS::Table), and the tied interface (Net::NIS).
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor 
-make OPTIMIZE="$RPM_OPT_FLAGS" 
+%make OPTIMIZE="%{optflags}"
 # (sb) known to fail:
 #  http://nntp.x.perl.org/group/perl.cpan.testers/58036 (and more)
 #make test
 
 %install
-rm -rf $RPM_BUILD_ROOT 
+rm -rf %{buildroot} 
 %makeinstall_std 
 
 %clean
-rm -rf $RPM_BUILD_ROOT 
+rm -rf %{buildroot} 
 
 %files
 %defattr(-,root,root)
-%doc ChangeLog README
+%doc Changes README
 %{_mandir}/man3/*
 %{perl_vendorarch}/Net
-%{perl_vendorarch}/Net/NIS
-%{perl_vendorarch}/auto/Net/NIS
+%{perl_vendorarch}/auto/Net
 
