@@ -12,6 +12,7 @@ Group:		Development/Perl
 URL:		http://search.cpan.org/dist/%{module}
 Source:		ftp://ftp.perl.org/pub/CPAN/modules/by-module/Net/%{module}-%{version}.tar.bz2
 BuildRequires:	perl-devel
+Buildroot:	%{_tmppath}/%{name}-%{version}
 
 %description
 This is a snapshot release of the NIS interface to Perl 5.  There are
