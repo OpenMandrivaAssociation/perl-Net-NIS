@@ -1,7 +1,7 @@
 %define module	Net-NIS
 %define name	perl-%{module}
 %define version 0.43
-%define release %mkrel 2
+%define release %mkrel 4
 
 Summary:	NIS interface to Perl 5	
 Name:		%{name}
